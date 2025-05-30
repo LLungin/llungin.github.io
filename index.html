@@ -328,7 +328,18 @@
         .contact-item:last-child {
             margin-bottom: 0;
         }
+
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
         
+        .contact-item a:hover {
+            color: var(--primary-light);
+            text-decoration: underline;
+        }
+                
         footer {
             background: var(--dark);
             color: white;
@@ -551,12 +562,16 @@
             <h2 class="section-title">Контакты</h2>
             <div class="contact-info">
                 <div class="contact-item">
-                    <h3>Телефон / Telegram / WhatsApp</h3>
-                    <p><a href="tel:+79163758646">+7 916 375-86-46</a></p>
+                    <h3>Телефон / WhatsApp / Telegram </h3>
+                    <p>
+                    <a href="tel:+79163758646">+7 916 375-86-46</a><br>
+                    <a href="https://wa.me/79163758646" target="_blank">WhatsApp</a> | 
+                    <a href="https://t.me/levlungin" target="_blank">Telegram</a>
+                    </p>
                 </div>
                 <div class="contact-item">
                     <h3>Email</h3>
-                    <p>lovik333@gmail.com</p>
+                     <p><a href="mailto:lovik333@gmail.com">lovik333@gmail.com</a></p>
                 </div>
             </div>
         </div>

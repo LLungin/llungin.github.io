@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лев Лунгин | Преподаватель математики и программирования</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8B4513;  /* Коричневый */
+            --primary-light: #A0522D;  /* Более светлый коричневый */
+            --dark: #5D4037;  /* Темно-коричневый */
+            --gray: #795548;  /* Серо-коричневый */
+            --light: #EFEBE9;  /* Светлый бежевый */
+            --border: #D7CCC8;  /* Светлая граница */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #EFEBE9 0%, #D7CCC8 100%);
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            border: 5px solid white;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+            margin-top: 0px;  /* Опускаем кнопку ниже */
+        }
+        
+        .btn:hover {
+            background: var(--primary-light);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
+            color: var(--dark);
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 2;
+        }
+        
+        .about-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .about-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 25px;
+        }
+        
+        .about-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            font-size: 24px;
+            line-height: 1;
+        }
+        
+        .about-item p {
+            margin-bottom: 0;
+        }
+        
+        .about-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Анимация появления пунктов */
+        .about-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .about-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .about-img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+        
+        .experience {
+            background: #EFEBE9;
+        }
+        
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .experience-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+        
+        .exp-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .exp-duration {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .exp-description {
+            color: var(--gray);
+        }
+        
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .achievement-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .achievement-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 20px -5px rgba(0,0,0,0.1) !important;
+        }
+        
+        .achievement-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .achievement-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .achievement-description {
+            color: var(--gray);
+        }
+
+        /* Общие настройки анимаций */
+        .achievement-card, .experience-card {
+            will-change: transform;
+        }
+        
+        .contact {
+            background: linear-gradient(135deg, #EFEBE9 0%, #D7CCC8 100%);
+            text-align: center;
+        }
+        
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        
+        .contact-item {
+            margin-bottom: 20px;
+        }
+        
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .about-content {
+                flex-direction: column;
+            }
+            
+            .hero-image, .about-image {
+                order: -1;
+                margin-bottom: 40px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Лев Лунгин</div>
+                <div class="nav-links">
+                    <a href="#about">Обо мне</a>
+                    <a href="#experience">Опыт</a>
+                    <a href="#achievements">Достижения</a>
+                    <a href="#contact">Контакты</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Лунгин Лев Евгеньевич</h1>
+                    <p class="tagline">Преподаватель математики, программирования и английского языка</p>
+                    <p class="tagline">Выпускник направления «Прикладная математика» НИУ ВШЭ 2021-2025</p>
+                    <a href="#contact" class="btn">Связаться со мной</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://i.ibb.co/nqnjMPB4/image.jpg" alt="Лев Лунгин" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Остальные секции остаются без изменений -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Обо мне</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <ul class="about-list">
+                        <li class="about-item">
+                            <p>Имею более чем 4-х летний опыт преподавания математики, программирования и английского языка десяткам довольных учеников разного уровня - от 6 класса до 3 курса университета, включая учеников и студентов из разных стран: Россия, Великобритании и США.</p>
+                        </li>
+                        <li class="about-item">
+                            <p>Специализируюсь на подготовке к экзаменам и олимпиадам различного уровня, а также провожу занятия по общему поднятию знаний и навыков по вышеперечисленным предметам.</p>
+                        </li>
+                        <li class="about-item">
+                            <p>В течение 2 лет преподавал и продолжаю преподавать математику в ФМШ ВШЭ для 10-11 классов. Благодаря многочисленным положительным отзывам от учеников и их родителей был выбран единственным спикером на "Дне открытых дверей ВШЭ", на котором я провёл лекцию по математике.</p>
+                        </li>
+                        <li class="about-item">
+                            <p>В настоящее время помимо частного преподавания и работы в НИУ ВШЭ выхожу на работу преподавателем математики в частной школе «Алгоритм», где преподавание осуществляется на английском языке.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Опыт работы</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <h3 class="exp-title">ФМШ ВШЭ</h3>
+                    <p class="exp-duration">Преподаватель математики для 10-11 классов · 2 года и по сей день</p>
+                    <p class="exp-description">Разработка и проведение занятий по углублённой программе математики (с элементами матанализа) для старшеклассников. Подготовка к олимпиадам и экзаменам.</p>
+                </div>
+                <div class="experience-card">
+                    <h3 class="exp-title">Частная школа «Алгоритм»</h3>
+                    <p class="exp-duration">Преподаватель математики и "тьютор" · настоящее время</p>
+                    <p class="exp-description">Преподавание математики на английском языке по международным стандартам.</p>
+                </div>
+                <div class="experience-card">
+                    <h3 class="exp-title">НИУ ВШЭ</h3>
+                    <p class="exp-duration">Учебный ассистент НИУ ВШЭ по курсу «Уравнения математической физики» · настоящее время</p>
+                    <p class="exp-description">Проведение консультаций, помощь в составлении проверочных работ и проверка работ студентов.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements" class="achievements-section">
+        <div class="container">
+            <h2 class="section-title">Достижения</h2>
+            <div class="achievements">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <h3 class="achievement-title">Призёр олимпиад</h3>
+                    <p class="achievement-description">Призёр различных олимпиад по математике, физике, программированию и английскому языку, включая 3 место на международной инженерной олимпиаде "IEPhO"</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎓</div>
+                    <h3 class="achievement-title">Успехи в учёбе</h3>
+                    <p class="achievement-description">Переведён на бюджетную форму обучения благодаря топ-4 месту в рейтинге, которое удерживаю по сей день, также в ближайшее время опубликуют статью по высшей математике в которой я буду соавтором</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">📢</div>
+                    <h3 class="achievement-title">Публичные выступления</h3>
+                    <p class="achievement-description">Единственный спикер от ФМШ ВШЭ на "Дне открытых дверей ВШЭ" с лекцией для аудитории в 120+ человек на тему «N-мерные пространства»</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Контакты</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Телефон / Telegram / WhatsApp</h3>
+                    <p>+7 916 375-86-46</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p>lovik333@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Лев Лунгин. Все права защищены.</p>
+        </div>
+    </footer>
+    <script>
+        // Функция для проверки видимости элементов
+        function checkVisibility() {
+            const section = document.querySelector('#about');
+            const items = document.querySelectorAll('.about-item');
+            
+            const sectionTop = section.getBoundingClientRect().top;
+            const sectionHeight = section.offsetHeight;
+            const windowHeight = window.innerHeight;
+            
+            // Проверяем, виден ли блок "Обо мне" (хотя бы 100px от его начала)
+            if (sectionTop < windowHeight - 100) {
+                items.forEach((item, index) => {
+                    // Добавляем задержку для каждого пункта
+                    setTimeout(() => {
+                        item.classList.add('visible');
+                    }, 150 * index);
+                });
+                
+                // Удаляем обработчик после срабатывания
+                window.removeEventListener('scroll', checkVisibility);
+            }
+        }
+    
+        // Запускаем проверку только при скролле
+        window.addEventListener('scroll', checkVisibility);
+        
+        // Проверяем сразу, если страница загрузилась с прокруткой
+        window.addEventListener('load', checkVisibility);
+    </script>
+</body>
+</html>

@@ -9,12 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #8B4513;  /* Коричневый */
-            --primary-light: #A0522D;  /* Более светлый коричневый */
-            --dark: #5D4037;  /* Темно-коричневый */
-            --gray: #795548;  /* Серо-коричневый */
-            --light: #EFEBE9;  /* Светлый бежевый */
-            --border: #D7CCC8;  /* Светлая граница */
+            --primary: #8B4513;
+            --primary-light: #A0522D;
+            --dark: #5D4037;
+            --gray: #795548;
+            --light: #EFEBE9;
+            --border: #D7CCC8;
         }
         
         * {
@@ -28,12 +28,23 @@
             line-height: 1.6;
             color: var(--dark);
             background-color: var(--light);
+            overflow-x: hidden;
         }
         
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+        
+        /* Мобильное меню */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
         }
         
         header {
@@ -74,7 +85,7 @@
         }
         
         .hero {
-            padding: 80px 0;
+            padding: 60px 0;
             background: linear-gradient(135deg, #EFEBE9 0%, #D7CCC8 100%);
         }
         
@@ -95,8 +106,9 @@
         }
         
         .profile-img {
-            width: 300px;
-            height: 300px;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
             border-radius: 20px;
             object-fit: cover;
             box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
@@ -112,7 +124,7 @@
         .tagline {
             font-size: 1.2rem;
             color: var(--gray);
-            margin-bottom: 30px;
+            margin-bottom: 15px;
             font-weight: 400;
         }
         
@@ -125,7 +137,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: background 0.3s;
-            margin-top: 0px;  /* Опускаем кнопку ниже */
+            margin-top: 10px;
         }
         
         .btn:hover {
@@ -133,12 +145,12 @@
         }
         
         section {
-            padding: 80px 0;
+            padding: 60px 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             font-size: 2rem;
             color: var(--dark);
         }
@@ -182,7 +194,6 @@
             margin-bottom: 0;
         }
 
-        /* Анимация появления пунктов */
         .about-item {
             opacity: 0;
             transform: translateY(20px);
@@ -213,13 +224,13 @@
         .experience-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 20px;
         }
         
         .experience-card {
             background: white;
             border-radius: 12px;
-            padding: 30px;
+            padding: 25px;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             text-align: center;
@@ -244,23 +255,21 @@
         
         .exp-description {
             color: var(--gray);
+            font-size: 0.95rem;
         }
         
         .achievements {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            gap: 20px;
         }
         
         .achievement-card {
             background: white;
             border-radius: 12px;
-            padding: 30px;
+            padding: 25px;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
             text-align: center;
-        }
-
-        .achievement-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -270,9 +279,9 @@
         }
         
         .achievement-icon {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--primary);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .achievement-title {
@@ -282,9 +291,9 @@
         
         .achievement-description {
             color: var(--gray);
+            font-size: 0.95rem;
         }
 
-        /* Общие настройки анимаций */
         .achievement-card, .experience-card {
             will-change: transform;
         }
@@ -298,13 +307,22 @@
             max-width: 600px;
             margin: 0 auto;
             background: white;
-            padding: 40px;
+            padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
         }
         
         .contact-item {
             margin-bottom: 20px;
+        }
+        
+        .contact-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .contact-item p {
+            font-size: 1rem;
         }
         
         .contact-item:last-child {
@@ -314,22 +332,114 @@
         footer {
             background: var(--dark);
             color: white;
-            padding: 30px 0;
+            padding: 25px 0;
             text-align: center;
+            font-size: 0.9rem;
         }
         
-        @media (max-width: 768px) {
+        /* Мобильные стили */
+        @media (max-width: 992px) {
             .hero-content, .about-content {
                 flex-direction: column;
             }
             
             .hero-image, .about-image {
                 order: -1;
-                margin-bottom: 40px;
+                margin-bottom: 30px;
+            }
+            
+            .profile-img {
+                max-width: 250px;
             }
             
             h1 {
                 font-size: 2rem;
+                text-align: center;
+            }
+            
+            .tagline {
+                text-align: center;
+            }
+            
+            .btn {
+                display: block;
+                text-align: center;
+                margin: 20px auto 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+            
+            .experience-grid, .achievements {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 40px 0;
+            }
+            
+            section {
+                padding: 50px 0;
+            }
+            
+            .about-item {
+                padding-left: 25px;
+                margin-bottom: 20px;
+            }
+            
+            .about-item:before {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .exp-title, .achievement-title {
+                font-size: 1.1rem;
+            }
+            
+            .exp-duration, .exp-description, .achievement-description {
+                font-size: 0.9rem;
+            }
+            
+            .contact-info {
+                padding: 20px;
             }
         }
     </style>
@@ -339,6 +449,7 @@
         <div class="container">
             <nav>
                 <div class="logo">Лев Лунгин</div>
+                <button class="mobile-menu-btn">☰</button>
                 <div class="nav-links">
                     <a href="#about">Обо мне</a>
                     <a href="#experience">Опыт</a>
@@ -365,7 +476,6 @@
         </div>
     </section>
 
-    <!-- Остальные секции остаются без изменений -->
     <section id="about" class="about">
         <div class="container">
             <h2 class="section-title">Обо мне</h2>
@@ -458,33 +568,41 @@
         </div>
     </footer>
     <script>
-        // Функция для проверки видимости элементов
+        // Мобильное меню
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Закрытие меню при клике на ссылку
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Анимация пунктов "Обо мне"
         function checkVisibility() {
             const section = document.querySelector('#about');
             const items = document.querySelectorAll('.about-item');
             
             const sectionTop = section.getBoundingClientRect().top;
-            const sectionHeight = section.offsetHeight;
             const windowHeight = window.innerHeight;
             
-            // Проверяем, виден ли блок "Обо мне" (хотя бы 100px от его начала)
             if (sectionTop < windowHeight - 100) {
                 items.forEach((item, index) => {
-                    // Добавляем задержку для каждого пункта
                     setTimeout(() => {
                         item.classList.add('visible');
                     }, 150 * index);
                 });
                 
-                // Удаляем обработчик после срабатывания
                 window.removeEventListener('scroll', checkVisibility);
             }
         }
     
-        // Запускаем проверку только при скролле
         window.addEventListener('scroll', checkVisibility);
-        
-        // Проверяем сразу, если страница загрузилась с прокруткой
         window.addEventListener('load', checkVisibility);
     </script>
 </body>
